@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bureau du Rap - Encyclopédie</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="#index.html"><img src="img/BDR_logo-removebg-preview.png" alt="Bureau du Rap Logo" class="logo-img"></a>
+            <span class="logo-text">BUREAU <span class="logo-accent">DU RAP</span></span>
+        </div>
+        <input type="text" class="search-bar" placeholder="Rechercher un rappeur, une ville..." id="searchInput">
+    </nav>
+
+    <header class="hero">
+        <h1>L'Encyclopédie du <span class="text-gradient">Rap Français</span></h1>
+        <p>La base de données ultime. Explorez les profils des artistes qui ont marqué l'histoire.</p>
+    </header>
+    <div class="filters-container">
+    <button class="filter-btn active" data-filter="all">Tout voir</button>
+    <button class="filter-btn" data-filter="legende">🏆 Légendes</button>
+    <button class="filter-btn" data-filter="tendance">🔥 Tendances</button>
+    <button class="filter-btn" data-filter="pepite">💎 Pépites</button>
+    <button class="filter-btn" data-filter="classique">💿 Classiques</button>
+</div>
+
+    <main class="container">
+        <div class="grid" id="rapperGrid">
+            </div>
+    </main>
+    <script src="database.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>
+
+</body>
+</html>

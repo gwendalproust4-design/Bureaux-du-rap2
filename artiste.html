@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Artiste</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Retour</a>
+
+    <header class="artist-header" id="headerBg">
+        <div class="artist-info">
+            <span class="artist-city" id="artistCity">Ville</span>
+            <h1 class="artist-name" id="artistName">Artiste</h1>
+        </div>
+    </header>
+
+    <section class="bio-section" id="artistBio">
+        Chargement...
+    </section>
+
+    <section class="disco-section">
+        <h2 class="section-title">Projets Marquants</h2>
+        <div class="albums-grid" id="albumsGrid"></div>
+    </section>
+
+    <script src="database.js"></script> 
+    <script src="script.js"></script>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const artistId = params.get('id');
+        const artiste = dataRappeurs.find(r => r.id === artistId);
+
+        if (artiste) {
+            document.getElementById('artistName').innerText = artiste.nom;
+            document.getElementById('artistCity').innerText = artiste.ville;
+            // Fond avec l'image de l'artiste floutée
+            document.getElementById('headerBg').style.backgroundImage = `linear-gradient(to bottom, rgba(15,15,15,0.3), #0f0f0f), url('${artiste.image}')`;
+            
+            // Gestion de la bio
+            document.getElementById('artistBio').innerHTML = artiste.bioLongue ? artiste.bioLongue : artiste.bio;
+
+            // Gestion des albums
+            const albumsGrid = document.getElementById('albumsGrid');
+            if (artiste.albums) {
+                artiste.albums.forEach(album => {
+                    albumsGrid.innerHTML += `
+                        <div class="album-card">
+                            <img src="${album.cover}" class="album-cover">
+                            <div class="album-info">
+                                <h3 class="album-title">${album.titre}</h3>
+                                <span class="album-year">${album.annee}</span>
+                            </div>
+                        </div>`;
+                });
+            } else {
+                albumsGrid.innerHTML = "<p style='color:gray'>Aucun album listé pour l'instant.</p>";
+            }
+        } else {
+            document.body.innerHTML = "<h1 style='color:white;text-align:center;margin-top:50px'>Artiste non trouvé 😢 <br><a href='index.html' style='color:#8A2BE2'>Retour</a></h1>";
+        }
+    </script>
+</body>
+</html>

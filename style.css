@@ -370,3 +370,27 @@ body {
 .back-btn:hover {
     background: var(--accent);
 }
+/* --- BOUTON VOIR PLUS --- */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+#loadMoreBtn {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text-white);
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#loadMoreBtn:hover {
+    background-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-3px);
+}
